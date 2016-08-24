@@ -53,15 +53,27 @@ angular.module('starter.controllers', [])
   
 })
 
-.controller('listaCtrl', function($scope, $firebaseObject, $ionicPopup, $location, ListaSelecionado){
+.controller('listaCtrl', function($scope, $firebaseArray, $ionicPopup, $location, ListaSelecionado, $ionicLoading){
   var ref = new Firebase("https://riobonito-92bac.firebaseio.com/");
 
-$scope.pegaDados = function (data){
-  $scope.dados = $firebaseObject(ref.child(data));
-  $location.path('/app/lista');
-  ListaSelecionado.dados = $scope.dados;
-  console.log(ListaSelecionado.dados);
+  $scope.pegaDados = function (data){
+    $scope.dados = $firebaseArray(ref.child(data));
+    $location.path('/app/lista');
+    $ionicLoading.show({
+      template: 'Carregando dados...'
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
+    $scope.dados.$loaded(
+  function(x) {
+    $ionicLoading.hide();
+  }, function(error) {
+    console.error("Error:", error);
+  });
+    ListaSelecionado.dados = $scope.dados;
+    //console.log(ListaSelecionado.dados);
   };
+
 
 
 })
