@@ -139,7 +139,18 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('culturaCtrl', function($scope){
-  
+.controller('culturaCtrl', function($scope, $http){
+
+  $scope.init = function() {
+        $http.get("http://rss2json.com/api.json", { params: { "rss_url": "https://marealvares.wordpress.com/feed/"  } } )
+            .success(function(data) {
+                $scope.dados = data;
+                console.log(data);
+            })
+            .error(function(data) {
+                console.log("ERROR: " + data);
+            });
+    }
+
 })
 
