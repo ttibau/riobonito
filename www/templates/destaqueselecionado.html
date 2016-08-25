@@ -1,0 +1,27 @@
+<ion-modal-view>
+  	<ion-header-bar>
+	    <button class=class="button icon-left ion-chevron-left button-clear button-dark" ng-click="fecharModal()"> Voltar</button>
+	</ion-header-bar> 
+	<ion-content>
+		<div class="list card">
+		  <div class="item item-avatar">
+		    <img src="{{item.imagem1}}">
+		    <h2>{{item.nome}} <span class="ion-ios-star-outline"></span></h2>
+		    <p>{{item.descricao}}</p>
+		  </div>
+
+		  <div class="item item-body">
+		    <img src="{{item.imagem2}}">
+		    <p>
+				<p><strong><span class="ion-android-textsms"></span> Nome: </strong>{{item.nome}}</p>
+				<p><strong><span class="ion-android-call"></span> Telefone: </strong>{{item.telefone}}</p>
+				<p><strong><span class="ion-android-map"></span> Endereço: </strong>{{item.endereco}}</p>
+				<button class="button button-full button-royal">
+  					<span class="stable"><span class="ion-ios-star"></span> Essa empresa é uma empresa em destaque.</span>
+				</button>
+		    </p>
+		  </div>
+
+		</div>		
+	</ion-content>
+</ion-modal-view>	

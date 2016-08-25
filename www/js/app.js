@@ -86,6 +86,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'firebase', 'angular-
       }
     })
 
+    .state('app.cultura', {
+      url: '/cultura',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/cultura.html',
+          controller: 'culturaCtrl'
+        }
+      }
+    })
+
+    .state('app.destaques', {
+      url: '/destaques',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/destaques.html',
+          controller: 'destaquesCtrl'
+        }
+      }
+    })
+
     .state('selecionado', {
       url: '/selecionado',
       templateUrl: 'templates/selecionado.html',
@@ -122,5 +142,5 @@ angular.module('starter', ['ionic', 'starter.controllers', 'firebase', 'angular-
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/destaques');
 });

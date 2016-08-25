@@ -11,12 +11,6 @@ angular.module('starter.controllers', [])
     $scope.$broadcast('scroll.refreshComplete');
   };
 
-  $scope.mostraMensagem = function(){
-    var alerta = $ionicPopup.alert({
-      title: 'Aviso',
-      template: 'Atenção, a apuração estará disponível no dia 1/10/2016 <strong>primeiro turno</strong>, o resultado será feito em tempo real'
-    });
-  };
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
@@ -100,6 +94,52 @@ angular.module('starter.controllers', [])
    $scope.fecharModal = function(){
       $scope.modal.hide();
    };
-   
+})
+
+.controller('destaquesCtrl', function($scope, $firebaseArray, $ionicModal, $ionicLoading, ItemSelecionado){
+  var ref = new Firebase("https://riobonito-92bac.firebaseio.com/");
+  $scope.pegaDados = function(){
+    $scope.dados = $firebaseArray(ref.child('destaque'));
+    ItemSelecionado.item = $scope.dados;
+    console.log($scope.dados);
+  };
+
+  $scope.pegaDados();
+  $ionicLoading.show({
+      template: 'Carregando dados...'
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
+    $scope.dados.$loaded(
+  function(x) {
+    $ionicLoading.hide();
+  }, function(error) {
+    console.error("Error:", error);
+  });
+
+  $ionicModal.fromTemplateUrl('templates/destaqueselecionado.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+   }).then(function(modal){
+    $scope.modal = modal;
+   });  
+
+   //abre a modal
+   $scope.abrirModal = function(dados){
+      $scope.modal.show();
+      ItemSelecionado.item = dados; 
+      $scope.item = ItemSelecionado.item;
+      console.log(ItemSelecionado.item);
+   };
+
+   //fecha a modal
+   $scope.fecharModal = function(){
+      $scope.modal.hide();
+   };
+
+})
+
+.controller('culturaCtrl', function($scope){
+  
 })
 
