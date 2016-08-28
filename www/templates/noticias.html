@@ -1,0 +1,11 @@
+<ion-view view-title="Principais notícias da região" ng-controller="noticiasCtrl">
+  <ion-content>
+	<div class="list">
+    <a class="item item-thumbnail-left" ng-repeat="parceiro in parceiros">
+      <img src="{{parceiro.logo}}">
+      <h2>{{parceiro.nome}}</h2>
+      <p>{{parceiro.site}}</p>
+    </a>
+	</div>
+  </ion-content>
+</ion-view>

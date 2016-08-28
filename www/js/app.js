@@ -22,6 +22,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'firebase', 'angular-
   });
 })
 
+.factory('ListaNoticia', function(){
+  dados = [];
+  dados.item = [];
+  dados.dataPub = [];
+  dados.img = [];
+  return dados;
+})
+
 .factory('ListaSelecionado', function(){
   dados = {};
   dados.nome = '';
@@ -57,16 +65,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'firebase', 'angular-
     }
   })
 
-  .state('app.vereador',{
-    url: '/vereador',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/vereador.html',
-        controller: 'PlaylistsCtrl'
-      }
-    }
-  })
-
   .state('app.browse', {
       url: '/browse',
       views: {
@@ -76,12 +74,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'firebase', 'angular-
         }
       }
     })
-    .state('app.playlists', {
-      url: '/playlists',
+    .state('app.noticias', {
+      url: '/noticias',
       views: {
         'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
+          templateUrl: 'templates/noticias.html',
+          controller: 'noticiasCtrl'
         }
       }
     })

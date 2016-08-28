@@ -1,19 +1,20 @@
-<ion-view view-title="Cultura" ng-controlle="culturaCtrl" ng-init="init()">
+<ion-view view-title="Cultura" ng-controlle="culturaCtrl" ng-init="nadelson()">
   	<ion-content>
   	<div class="list">
-		<a class="item item-thumbnail-left" href="#"> 
-			<img src="asd.jpg" alt="">
+		<a class="item item-thumbnail-left" ng-click="agendaCultural()"> 
+			<img src="img/cultura.png" alt="">
 			<h2> Agenda cultural do mês </h2>
 			<p>Acompanhe aqui os principais eventos da cidade do mês</p>
 		</a>
 	</div>
 
-  	<div class="list" ng-repeat="dado in dados">
+  	<div class="list" ng-repeat="dado in dados.items">
   	<a class="item item-thumbnail-left">
       <img src="{{dado.thumbnail}}">
-      <h2>{{dado.items.title}}</h2>
-      <p>Nine Inch Nails</p>
-      <span ng-bind-html="entrada.contentSnippet"></span>
+      <h2>{{dado.title}}</h2>
+      <p>{{dados.feed.title}}</p>
+      <p>{{dados.pubDate}}</p>
+      
     </a>
 </div>
 	</ion-content>

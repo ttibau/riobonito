@@ -38,9 +38,28 @@ angular.module('starter.controllers', [])
 .controller('VereadorCtrl', function($scope){
 
 })
+ 
+.controller('noticiasCtrl', function($scope, $http, ListaNoticia) {
 
-.controller('PlaylistsCtrl', function($scope) {
+  $scope.parceiros = {
+    nadelson: {
+      logo: 'asd',
+      site: 'www.nadelson.com.br',
+      nome: 'Nadelson'
+    },
+    flavioAzevezo: {
+      logo: 'asd',
+      site: 'www.jornalistaflavioazevedo.blogspot.com.br/',
+      nome: 'Jornalista Flávio Azevedo'
+    }, 
+    riobonito: {
+      logo: 'asd',
+      site: 'www.riobonito.blogspot.com.br/',
+      nome: 'Portal Rio Bonito - RJ'
+    }
+  };
 
+  
 })
 
 .controller('PlaylistCtrl', function($scope) {
@@ -67,8 +86,6 @@ angular.module('starter.controllers', [])
     ListaSelecionado.dados = $scope.dados;
     //console.log(ListaSelecionado.dados);
   };
-
-
 
 })
 
@@ -139,18 +156,27 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('culturaCtrl', function($scope, $http){
+.controller('culturaCtrl', function($scope, $http, $ionicPopup){
 
-  $scope.init = function() {
-        $http.get("http://rss2json.com/api.json", { params: { "rss_url": "https://marealvares.wordpress.com/feed/"  } } )
-            .success(function(data) {
-                $scope.dados = data;
-                console.log(data);
-            })
-            .error(function(data) {
-                console.log("ERROR: " + data);
-            });
-    }
+  $scope.mariana = function() {
+    $http.get("http://rss2json.com/api.json", { params: { "rss_url": "https://marealvares.wordpress.com/feed/"  } } )
+        .success(function(data) {
+            $scope.dados = data;
+            console.log(data.items);
+        })
+        .error(function(data) {
+            console.log("ERROR: " + data);
+        });
+  };
+
+  $scope.agendaCultural = function(){
+    $ionicPopup.alert({
+      title: 'Agenda cultural - Rio Bonito!',
+      template: 'Colocar <strong>aqui</strong> a agenda cultural!'
+    });
+  };
+
+  $scope.mariana();
 
 })
 

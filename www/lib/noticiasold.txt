@@ -1,0 +1,25 @@
+noticiasold.txt
+
+/**  $scope.pegaNoticias = function(){
+    $http.get("http://rss2json.com/api.json", { params: { "rss_url" : "http://jornalistaflavioazevedo.blogspot.com/feeds/posts/default?alt=rss" } })
+      .success(function(data){
+        $scope.dados = data.items;
+        ListaNoticia.item.push(data.items);
+        console.log(ListaNoticia.dataPub);
+        return ListaNoticia.item;
+      })
+      .error(function(data){
+        console.log("ERRO " + data);
+      });
+
+    $http.get("http://rss2json.com/api.json", { params: { "rss_url" : "http://riobonito.blogspot.com/feeds/posts/default?alt=rss" } }) 
+      .success(function(data) {
+        ListaNoticia.item.push(data.items);
+        return ListaNoticia.item;
+      })
+    .error(function(data){
+      console.log("ERRO " + data);
+    });
+  }; 
+   **/
+  //$scope.pegaNoticias();
