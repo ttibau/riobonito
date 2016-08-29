@@ -24,9 +24,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'firebase', 'angular-
 
 .factory('ListaNoticia', function(){
   dados = [];
-  dados.item = [];
-  dados.dataPub = [];
-  dados.img = [];
+  dados.rssTitle = [];
+  dados.rssUrl = [];
+  dados.rssSiteUrl = [];
+  dados.entries = [];
   return dados;
 })
 
@@ -56,11 +57,31 @@ angular.module('starter', ['ionic', 'starter.controllers', 'firebase', 'angular-
     controller: 'AppCtrl'
   })
 
+  .state('app.noticiaselecionada', {
+      url: '/noticiaselecionada',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/noticiaselecionada.html',
+          controller: 'noticiaSelecionadaCtrl'
+        }
+      }
+    }) 
+
   .state('app.search', {
     url: '/search',
     views: {
       'menuContent': {
         templateUrl: 'templates/search.html'
+      }
+    }
+  })
+
+  .state('app.meteorologia', {
+    url: '/meteorologia',
+    views: {
+      'menuContent' : {
+        templateUrl: 'templates/meteorologia.html',
+        controller: 'meteorologiaCtrl'
       }
     }
   })

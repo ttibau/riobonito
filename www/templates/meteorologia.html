@@ -1,0 +1,43 @@
+<ion-view view-title="Meteorologia" ng-controller="meteorologiaCtrl">
+  	<ion-content>
+  		<div class="list card">
+
+		  <div class="item item-thumbnail-left">
+		  	<img src="{{img}}" width="250">
+		    <h1>{{dados.results.temp}}°C</h1>
+		    <h2>{{dados.results.city_name}}</h2>
+		    <p>{{dados.results.date}}</p>
+		  </div>
+		  <div class="item item-body">
+		    <p>
+		    	<p>
+		      		<span class="ion-drag"></span> <strong>Descrição:</strong> {{dados.results.description}}
+		      	</p>
+		      	<p>
+		      		<span class="ion-ios-loop-strong"></span> <strong>Velocidade do vento: </strong> {{dados.results.wind_speedy}}
+		      	</p>
+		      	<p>
+		      		<span class="ion-waterdrop positive"></span> <strong>Umidade: </strong> {{dados.results.humidity}}%
+		      	</p>
+		      	<p>
+		      		<span class="ion-ios-sunny energized"></span> <strong>Nascer do sol: </strong> {{dados.results.sunrise}}
+		      	</p>	
+		      	<p>
+		      		<span class="ion-ios-moon"></span> <strong>Por do sol: </strong> {{dados.results.sunset}}
+		      	</p>
+		    </p>
+		    <p>
+		      <div class="card" ng-repeat="dados in dados.results.forecast">
+				  <div class="item item-text-wrap">
+				   		<span class="ion-calendar assertive"></span><strong> Dia: </strong>{{dados.date}} - 
+				   		<span class="ion-android-upload"></span> {{dados.max}}°C - 
+				   		<span class="ion-android-download"></span>{{dados.min}}°C - 
+				   		{{dados.description}}
+				  </div>
+				</div>
+			</p>
+		  </div>
+
+		</div>
+	</ion-content>
+</ion-view>	

@@ -1,9 +1,10 @@
 <ion-view view-title="Principais notícias da região" ng-controller="noticiasCtrl">
   <ion-content>
-	<div class="list">
-    <a class="item item-thumbnail-left" ng-repeat="parceiro in parceiros">
+	<div class="list" ng-repeat="parceiro in parceiros">
+    <a class="item item-thumbnail-left" ng-click="pegaParceiro(parceiro.url)">
       <img src="{{parceiro.logo}}">
       <h2>{{parceiro.nome}}</h2>
+      <p>{{parceiro.descricao}}</p>
       <p>{{parceiro.site}}</p>
     </a>
 	</div>

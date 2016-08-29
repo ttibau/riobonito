@@ -6,7 +6,7 @@ angular.module('starter.controllers', [])
   $scope.refresh = function(){
     $ionicPopup.alert({
       title: 'Estamos quase lá!',
-      template: 'Aguarde até o dia das apurações ;D'
+      template: 'Aguarde até o dia das apurações :D'
     });
     $scope.$broadcast('scroll.refreshComplete');
   };
@@ -39,25 +39,51 @@ angular.module('starter.controllers', [])
 
 })
  
-.controller('noticiasCtrl', function($scope, $http, ListaNoticia) {
+.controller('noticiasCtrl', function($scope, $http, ListaNoticia, $ionicLoading, $location) {
 
   $scope.parceiros = {
     nadelson: {
-      logo: 'asd',
+      logo: 'img/nadelson.png',
       site: 'www.nadelson.com.br',
-      nome: 'Nadelson'
+      nome: 'Nadelson',
+      url: 'http://nadelson.com.br/feed/',
+      descricao: 'Café Poético e Filosófico'
     },
     flavioAzevezo: {
-      logo: 'asd',
+      logo: 'img/flavioazevedo.jpg',
       site: 'www.jornalistaflavioazevedo.blogspot.com.br/',
-      nome: 'Jornalista Flávio Azevedo'
+      nome: 'Jornalista Flávio Azevedo',
+      url: 'http://jornalistaflavioazevedo.blogspot.com/feeds/posts/default?alt=rss',
+      descricao: 'É editor do jornal "O TEMPO", um dos jornais que circulam em Rio Bonito/RJ. Ele também apresenta, na Super Radio Tupi 1340 AM - Leste Fluminense, de segunda a sexta-feira, entre 13h e 15h, o "Programa Flávio Azevedo", do qual é produtor e diretor'
     }, 
     riobonito: {
-      logo: 'asd',
+      logo: 'img/rbrj.png',
       site: 'www.riobonito.blogspot.com.br/',
-      nome: 'Portal Rio Bonito - RJ'
+      nome: 'Portal Rio Bonito - RJ',
+      url: 'http://riobonito.blogspot.com/feeds/posts/default?alt=rss',
+      descricao: 'SEJA BEM VINDO AO PORTAL DE NOTÍCIAS DA CIDADE DE RIO BONITO! VAMOS SONHAR COM DIAS MELHORES, COM UMA CIDADE MELHOR PARA TODOS!'
     }
   };
+
+  $scope.pegaParceiro = function(url){
+    $ionicLoading.show({
+        template: 'Carregando dados...'
+      }).then(function(){
+         console.log("O indicador de carregamento foi iniciado...");
+    });  
+    $http.get("http://rss2json.com/api.json", { params: { "rss_url" : url } })
+      .success(function(data){
+        ListaNoticia.dados = data;
+        $scope.dados = data;
+        $ionicLoading.hide();  
+        $location.path('/app/noticiaselecionada');      
+       // console.log($scope.dados);
+      })
+      .error(function(err){
+        console.log("ERRO: " + err);
+      });
+  };
+
 
   
 })
@@ -156,12 +182,18 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('culturaCtrl', function($scope, $http, $ionicPopup){
+.controller('culturaCtrl', function($scope, $http, $ionicPopup, $ionicLoading){
 
   $scope.mariana = function() {
+    $ionicLoading.show({
+      template: 'Carregando dados...'
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
     $http.get("http://rss2json.com/api.json", { params: { "rss_url": "https://marealvares.wordpress.com/feed/"  } } )
         .success(function(data) {
             $scope.dados = data;
+            $ionicLoading.hide();
             console.log(data.items);
         })
         .error(function(data) {
@@ -169,10 +201,15 @@ angular.module('starter.controllers', [])
         });
   };
 
+   $scope.browse = function(v){
+    window.open(v, "_self", "location=yes");
+    console.log('foi');
+  };
+
   $scope.agendaCultural = function(){
     $ionicPopup.alert({
       title: 'Agenda cultural - Rio Bonito!',
-      template: 'Colocar <strong>aqui</strong> a agenda cultural!'
+      template: 'Colocar <strong>aqui</strong> a agenda cultural! Vindo do firebase'
     });
   };
 
@@ -180,3 +217,32 @@ angular.module('starter.controllers', [])
 
 })
 
+.controller("noticiaSelecionadaCtrl", function($scope, ListaNoticia){
+  console.log(ListaNoticia.dados);
+  $scope.listaNoticias = ListaNoticia.dados;
+   $scope.browse = function(v){
+    window.open(v, "_self", "location=yes");
+    console.log('foi');
+  };
+
+})
+
+.controller("meteorologiaCtrl", function($scope, $http, $ionicLoading){
+  $ionicLoading.show({
+      template: 'Carregando dados...'
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
+  $http.get("http://api.hgbrasil.com/weather/?format=json&cid=BRXX3194")
+    .success(function(dados){
+      $scope.dados = dados;
+      $scope.img = "http://assets.hgbrasil.com/weather/images/" + dados.results.img_id + ".png";
+      $ionicLoading.hide();
+      console.log(dados);
+    })
+    .error(function(err){
+      console.log("ERRO " + err);
+    });
+
+
+})

@@ -1,0 +1,12 @@
+<ion-view view-title="Notícias" ng-controller="noticiaSelecionadaCtrl">
+  	<ion-content>
+		<div class="list" ng-repeat="listaNoticias in listaNoticias.items">
+		    <a class="item item-thumbnail-left" ng-click="browse(listaNoticias.link)">
+		      <img src="{{listaNoticias.thumbnail}}">
+		      <h2>{{listaNoticias.title}}</h2>
+		      <!-- <span ng-bind-html="listaNoticias.description"></span> -->
+		    </a>
+			
+		</div>
+	</ion-content>
+</ion-view>	
