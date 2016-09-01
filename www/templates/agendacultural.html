@@ -3,6 +3,13 @@
 	    <button class=class="button icon-left ion-chevron-left button-clear button-dark" ng-click="fecharModal()"> Voltar</button>
 	</ion-header-bar> 
 	<ion-content>
-	testetsetts
+		<p>
+			<div class="card" ng-repeat="agenda in agenda['0']">
+				<p><strong> <span class="ion-speakerphone"></span> Nome: </strong>{{agenda.nome}}</p>
+				<p><strong> <span class="ion-map"></span> Local: </strong>{{agenda.local}}</p>
+				<p><strong> <span class="ion-calendar"></span> Data: </strong>{{agenda.data}}</p>
+				<p><strong> <span class="ion-clock"></span> Horário: </strong>{{agenda.horario}}</p>
+			</div>
+		</p>
 	</ion-content>
 </ion-modal-view>	

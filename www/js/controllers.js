@@ -202,7 +202,7 @@ $scope.pegaApuracao = function(){
 
 })
 
-.controller('culturaCtrl', function($scope, $http, $ionicModal, $ionicLoading, $firebaseArray){
+.controller('culturaCtrl', function($scope, $http, $ionicModal, $ionicLoading, $firebaseArray, AgendaCultural){
   var ref = new Firebase("https://riobonito-92bac.firebaseio.com/");
 
   $scope.mariana = function() {
@@ -227,6 +227,12 @@ $scope.pegaApuracao = function(){
     console.log('foi');
   };
 
+
+    $scope.agenda = $firebaseArray(ref.child('cultural'));
+    console.log($scope.agenda);
+    $scope.asd = 'cascudo';
+  
+
   // faz a instancia do modal
   $ionicModal.fromTemplateUrl('templates/agendacultural.html', {
     scope: $scope,
@@ -236,9 +242,7 @@ $scope.pegaApuracao = function(){
    }); 
 
   $scope.agendaCultural = function(){
-    
    $scope.modal.show();
-
   };
 
   $scope.fecharModal = function(){
@@ -281,4 +285,10 @@ $scope.pegaApuracao = function(){
 
 .controller("apuracaoCtrl", function($scope){
   
+})
+
+.controller("sobreCtrl", function($scope, $firebaseObject){
+  var ref =  new Firebase("https://riobonito-92bac.firebaseio.com/");
+  $scope.mensagem = $firebaseObject(ref.child('mensagem'));
+  console.log($scope.mensagem);
 })

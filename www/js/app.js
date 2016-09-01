@@ -22,8 +22,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'firebase', 'angular-
   });
 })
 
-.factory('Agendacultural', function(){
-  
+.factory('AgendaCultural', function(){
+  agenda = [];
+  agenda.nome = [];
+  return agenda;
 })
 
 .factory('ListaNoticia', function(){
