@@ -1,7 +1,28 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $location, $ionicPopup) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $location, $ionicPopup, $firebaseArray, $ionicLoading, ApuracaoVotos) {
 
+var ref = new Firebase("https://riobonito-92bac.firebaseio.com/");
+
+$scope.pegaApuracao = function(){
+  $scope.dados = $firebaseArray(ref.child('apuracao'));
+  $scope.login();
+  $ionicLoading.show({
+      template: 'Carregando dados...'
+    });
+  $scope.dados.$loaded(
+  function(x) {
+    $ionicLoading.hide();
+  }, function(error) {
+    console.error("Error:", error);
+  });
+  ApuracaoVotos.dados = $scope.dados;
+  console.log(ApuracaoVotos.dados);
+  return ApuracaoVotos.dados;
+};
+  
+  $scope.dados = ApuracaoVotos.dados;
+  console.log($scope.dados);
 
   $scope.refresh = function(){
     $ionicPopup.alert({
@@ -83,8 +104,6 @@ angular.module('starter.controllers', [])
         console.log("ERRO: " + err);
       });
   };
-
-
   
 })
 
@@ -139,8 +158,9 @@ angular.module('starter.controllers', [])
    };
 })
 
-.controller('destaquesCtrl', function($scope, $firebaseArray, $ionicModal, $ionicLoading, ItemSelecionado){
+.controller('destaquesCtrl', function($scope, $firebaseArray, $ionicModal, $ionicLoading, ItemSelecionado, $ionicPopup){
   var ref = new Firebase("https://riobonito-92bac.firebaseio.com/");
+
   $scope.pegaDados = function(){
     $scope.dados = $firebaseArray(ref.child('destaque'));
     ItemSelecionado.item = $scope.dados;
@@ -151,7 +171,7 @@ angular.module('starter.controllers', [])
   $ionicLoading.show({
       template: 'Carregando dados...'
     }).then(function(){
-       console.log("The loading indicator is now displayed");
+       console.log("O indicador de Loading foi iniciado...");
     });
     $scope.dados.$loaded(
   function(x) {
@@ -182,7 +202,8 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('culturaCtrl', function($scope, $http, $ionicPopup, $ionicLoading){
+.controller('culturaCtrl', function($scope, $http, $ionicModal, $ionicLoading, $firebaseArray){
+  var ref = new Firebase("https://riobonito-92bac.firebaseio.com/");
 
   $scope.mariana = function() {
     $ionicLoading.show({
@@ -202,16 +223,28 @@ angular.module('starter.controllers', [])
   };
 
    $scope.browse = function(v){
-    window.open(v, "_self", "location=yes");
+    window.open(v, "_system", "location=yes");
     console.log('foi');
   };
 
+  // faz a instancia do modal
+  $ionicModal.fromTemplateUrl('templates/agendacultural.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+   }).then(function(modal){
+    $scope.modal = modal;
+   }); 
+
   $scope.agendaCultural = function(){
-    $ionicPopup.alert({
-      title: 'Agenda cultural - Rio Bonito!',
-      template: 'Colocar <strong>aqui</strong> a agenda cultural! Vindo do firebase'
-    });
+    
+   $scope.modal.show();
+
   };
+
+  $scope.fecharModal = function(){
+    $scope.modal.hide();
+  };
+
 
   $scope.mariana();
 
@@ -221,7 +254,7 @@ angular.module('starter.controllers', [])
   console.log(ListaNoticia.dados);
   $scope.listaNoticias = ListaNoticia.dados;
    $scope.browse = function(v){
-    window.open(v, "_self", "location=yes");
+    window.open(v, "_system", "location=yes");
     console.log('foi');
   };
 
@@ -244,5 +277,8 @@ angular.module('starter.controllers', [])
       console.log("ERRO " + err);
     });
 
+})
 
+.controller("apuracaoCtrl", function($scope){
+  
 })

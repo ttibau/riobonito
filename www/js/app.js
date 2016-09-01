@@ -22,12 +22,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'firebase', 'angular-
   });
 })
 
+.factory('Agendacultural', function(){
+  
+})
+
 .factory('ListaNoticia', function(){
   dados = [];
   dados.rssTitle = [];
   dados.rssUrl = [];
   dados.rssSiteUrl = [];
   dados.entries = [];
+  return dados;
+})
+
+.factory('ApuracaoVotos', function(){
+  dados = [];
+  dados.vereador = [];
+  dados.prefeito = [];
   return dados;
 })
 
@@ -72,6 +83,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'firebase', 'angular-
     views: {
       'menuContent': {
         templateUrl: 'templates/search.html'
+      }
+    }
+  })
+
+  .state('app.apuracao', {
+    url: '/apuracao',
+    views: {
+      'menuContent' : {
+        templateUrl: 'templates/login.html',
+        controller: 'apuracaoCtrl'
       }
     }
   })

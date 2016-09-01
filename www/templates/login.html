@@ -6,65 +6,28 @@
       <button class="button button-clear" ng-click="closeLogin()">Close</button>
     </div>
   </ion-header-bar>
-  <ion-content data-ng-init="mostraMensagem()">
+  <ion-content>
    <ion-refresher
     pulling-text="Pull to refresh..."
     on-refresh="refresh()">
   </ion-refresher>
-  <strong>Prefeito</strong>
-    <div class="list">
-      <a class="item item-avatar" href="#">
-        <img src="img/user.png">
-        <h2>Candidato 01 - PSOL</h2>
-        <p>Vice: Fulano</p>
-        <p>Votos: 12323</p>
-      </a>
-      <a class="item item-avatar" href="#">
-        <img src="img/user.png">
-        <h2>Candidato 02 - PDT</h2>
-        <p>Vice: Fulano</p>
-        <p>Votos: 1231231</p>
-      </a>
-      <a class="item item-avatar" href="#">
-        <img src="img/user.png">
-        <h2>Candidato 03 - PSDB</h2>
-        <p>Vice: Fulano</p>
-        <p>Votos: 123123123</p>
-      </a>
+  <center><strong>Prefeito</strong></center>
+    <div class="list" ng-repeat="dado in dados['0'] | orderBy: '-votos'">
+        <a class="item item-avatar">
+          <img src="img/user.png">
+          <h2>{{dado.nome}} - {{dado.partido}}</h2>
+          <p>Vice: {{dado.vice}}</p>
+          <p>Votos: {{dado.votos}}</p>
+        </a>
+      </div>
     </div>
-    <strong>Vereador</strong>
-    <div class="list">
-      <a class="item item-avatar" href="#">
-        <img src="img/user.png">
-        <h2>Candidato</h2>
-        <p>Votos: 123123123</p>
+    <center><strong>Vereador</strong></center>
+    <div class="list" ng-repeat="dado in dados['1'] | orderBy: '-votos'">
+      <a class="item item-avatar">
+        <img src="img/vereador.png">
+        <h2>{{dado.nome}}</h2>
+        <p>Votos: {{dado.votos}}</p>
       </a>
-      <a class="item item-avatar" href="#">
-        <img src="img/user.png">
-        <h2>Candidato</h2>
-        <p>Votos: 123123123</p>
-      </a>
-      <a class="item item-avatar" href="#">
-        <img src="img/user.png">
-        <h2>Candidato</h2>
-        <p>Votos: 123123123</p>
-      </a>
-      <a class="item item-avatar" href="#">
-        <img src="img/user.png">
-        <h2>Candidato</h2>
-        <p>Votos: 123123123</p>
-      </a>
-      <a class="item item-avatar" href="#">
-        <img src="img/user.png">
-        <h2>Candidato</h2>
-        <p>Votos: 123123123</p>
-      </a>
-      <a class="item item-avatar" href="#">
-        <img src="img/user.png">
-        <h2>Candidato</h2>
-        <p>Votos: 123123123</p>
-      </a>
-
     </div>
   </ion-content>
 </ion-modal-view>
