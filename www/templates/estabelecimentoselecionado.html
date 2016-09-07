@@ -1,0 +1,75 @@
+<ion-view title="Estabelecimentos" ng-controller="estabelecimentoSelecionadoCtrl">
+  <ion-header-bar>
+    <button class=class="button icon-left ion-chevron-left button-clear button-dark" ng-click="fechar()"> Voltar</button>
+    <h1 class="title">Estabelecimento de Saúde</h1>
+  </ion-header-bar>
+    <ion-content>
+      <br />
+      <center><img src="img/medicina.png"></center>
+      <p>
+        <center><span class="assertive"><span class="ion-alert-circled"></span> Atenção: Todos os dados aqui contidos são privisionados pelo Tribunal de Contas da União em tempo real. O <strong>Ta aki</strong> não tem acesso aos arquivos para qualquer mudança. </span></center>
+      </p>
+      <div class="card">
+        <div class="item item-text-wrap" ng-repeat="dado in dados">
+          <p>
+            <div class="item">
+              <p><strong>Nome:</strong> {{dado.nomeFantasia}}</p>
+            </div>
+            <div class="item">
+              <p><strong>Edereço:</strong> {{dado.logradouro}} - N: {{dado.numero}} - {{dado.bairro}} - {{dado.cidade}} - RJ</p>
+            </div>
+              <div class="item">
+                <p><strong>Categoria da Unidade:</strong> {{dado.categoriaUnidade}}</p>
+              </div>
+              <div class="item">
+                <p><strong>Descrição: </strong> {{dado.descricaoCompleta}}</p>
+              </div>
+              <div class="item">
+      <!-- USAR O NG IFF PASSANDO A VERIFICACAO  -->
+               <p><strong>Tem atendimento ambulatorial?</strong>: {{dado.temAtendimentoAmbulatorial}}
+               <span ng-if="dado.temAtendimentoAmbulatorial == 'Sim'"  class="ion-checkmark-round"></span>
+               <span ng-if="dado.temAtendimentoAmbulatorial == 'Não'" class="ion-close"></span>
+             </p>
+              </div>
+              <div class="item">
+                <p><strong>Tem atendimento de Urgêngia?</strong> {{dado.temAtendimentoUrgencia}}
+                   <span ng-if="dado.temAtendimentoUrgencia == 'Não'" class="ion-close"></span>
+                   <span ng-if="dado.temAtendimentoUrgencia == 'Sim'" class="ion-checkmark-round"></span>
+                 </p>
+              </div>
+              <div class="item">
+                <p><strong>Tem centro cirúrgico?</strong> {{dado.temCentroCirurgico}}
+                   <span ng-if="dado.temCentroCirurgico == 'Não'" class="ion-close"></span>
+                   <span ng-if="dado.temCentroCirurgico == 'Sim'" class="ion-checkmark-round"></span>
+              </div>
+              <div class="item">
+                <p><strong>Tem Diálise?</strong> {{dado.temDialise}}
+                   <span ng-if="dado.temDialise == 'Não'" class="ion-close"></span>
+                   <span ng-if="dado.temDialise == 'Sim'" class="ion-checkmark-round"></span>
+              </div>
+              <div class="item">
+                <p><strong>Tem Neonatal?</strong> {{dado.temNeoNatal}}
+                  <span ng-if="dado.temNeoNatal == 'Não'" class="ion-close"></span>
+                  <span ng-if="dado.temNeoNatal == 'Sim'" class="ion-checkmark-round"></span>
+                </p>
+              </div>
+              <div class="item">
+                <p><strong>Tem obstetra?</strong> {{dado.temObstetra}}
+                  <span ng-if="dado.temObstetra == 'Não'" class="ion-close"></span>
+                  <span ng-if="dado.temObstetra == 'Sim'" class="ion-checkmark-round"></span>
+                </p>
+              </div>
+              <div class="item">
+                <p><strong>Tem vínculo com SUS?</strong> {{dado.vinculoSus}}
+                  <span ng-if="dado.vinculoSus == 'Não'" class="ion-close"></span>
+                  <span ng-if="dado.vinculoSus == 'Sim'" class="ion-checkmark-round"></span>
+                </p>
+              </div>
+              <div class="item">
+                <p><strong>Turno de atendimento:</strong> {{dado.turnoAtendimento}}</p>
+              </div>
+          </p>
+        </div>
+      </div>
+    </ion-content>
+</ion-view>

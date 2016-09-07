@@ -1,0 +1,135 @@
+{
+  "telelista" :{
+    "acogue" : {
+      "1" : {
+        "endereco" : "oasdauidas",
+        "nome" : "casa3",
+        "telefone" : 223232
+      },
+      "casa da carne" : {
+        "endereco" : "rua 123123",
+        "nome" : "casa da carne",
+        "telefone" : 27342336
+      },
+      "casa da carne1" : {
+        "endereco" : "214124sfa",
+        "nome" : "asadf",
+        "telefone" : 123123
+      }
+    },
+    "beleza" : {
+      "salao da tia" : {
+        "endereco" : "rua 123123",
+        "nome" : "salao da tia 1",
+        "telefone " : 123123123
+      },
+      "salao da tia 2" : {
+        "endereco" : "asdfasdf",
+        "nome" : "salao da tia 2",
+        "telefone " : "123dsaf"
+      },
+      "trocando" : {
+        "endereco" : "teste",
+        "nome" : "trocando",
+        "telefone" : 27742123
+      }
+    }
+},
+  "apuracao" : {
+    "prefeito" : [ {
+      "nome" : "Candidato 01",
+      "partido" : "PDT",
+      "vice" : "Vice 01",
+      "votos" : 13423
+    }, {
+      "nome" : "Candidato 03",
+      "partido" : "PSOL",
+      "vice" : "Vice 03",
+      "votos" : 13000
+    }, {
+      "nome" : "Candidato 03",
+      "partido" : "PSDB",
+      "vice" : "Vice 03",
+      "votos" : 12645
+    }, {
+      "nome" : "Jucelino",
+      "partido" : "PTDB",
+      "vice" : "Vice do jucelino",
+      "votos" : "14567"
+    } ],
+    "vereador" : [ {
+      "nome" : "Candidato 17",
+      "votos" : 12434
+    }, {
+      "nome" : "Candidato 05",
+      "votos" : 12355
+    }, {
+      "nome" : "Candidato 02",
+      "votos" : 1234
+    }, {
+      "nome" : "Candidato 87",
+      "votos" : 2541
+    } ]
+  },
+  "cultural" : {
+    "eventos" : [ {
+      "data" : "14/09",
+      "horario" : "12:21",
+      "local" : "Varanda da Vânia",
+      "nome" : "Feijoada na casa da Vânia"
+    }, {
+      "data" : "12/09",
+      "horario" : "23:21",
+      "local" : "Marte",
+      "nome" : "Show com a banda marcial"
+    } ]
+  },
+  "destaque" : {
+    "Escola de Tennis André" : {
+      "descricao" : "Descricao da escola de tênis do Andre vai ser colocada aqui as informações do aplicativo",
+      "endereco" : "Rio Bonito Atlético Clube",
+      "imagem1" : "http://icons.iconarchive.com/icons/kevin-andersson/sportset/128/Tennis-icon.png",
+      "imagem2" : "http://i.imgur.com/brRhv87.jpg",
+      "nome" : "Escola de Tênis de André",
+      "telefone" : "(21)99928-5384"
+    },
+    "Farmácia da Judite" : {
+      "descricao" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor venenatis ligula ut fermentum. Aenean vitae quam vel felis tincidunt posuere. Cras non facilisis mi. Etiam dignissim semper ipsum vitae ultricies. Donec in imperdiet risus. Sed dignissim mi eu ornare malesuada. Nulla sed lobortis velit. Sed eget gravida elit. Nam convallis elit et enim elementum, at ullamcorper velit viverra. Integer dignissim augue a egestas pharetra. Suspendisse molestie lorem ac dolor porttitor luctus. Nam suscipit metus lobortis tellus finibus, eleifend fermentum mi aliquam.",
+      "endereco" : "Rua Dr Francisco de Souza, N 38 - Centro - Rio Bonito",
+      "imagem1" : "http://icons.iconarchive.com/icons/designcontest/ecommerce-business/128/store-icon.png",
+      "imagem2" : "http://icons.iconarchive.com/icons/guillendesign/variations-3/128/Android-Store-icon.png",
+      "nome" : "Farmácia da Judite",
+      "telefone" : "(21)2734-123"
+    },
+    "Loja de informática do Zé" : {
+      "descricao" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor venenatis ligula ut fermentum. Aenean vitae quam vel felis tincidunt posuere. Cras non facilisis mi. Etiam dignissim semper ipsum vitae ultricies. Donec in imperdiet risus. Sed dignissim mi eu ornare malesuada. Nulla sed lobortis velit. Sed eget gravida elit. Nam convallis elit et enim elementum, at ullamcorper velit viverra. Integer dignissim augue a egestas pharetra. Suspendisse molestie lorem ac dolor porttitor luctus. Nam suscipit metus lobortis tellus finibus, eleifend fermentum mi aliquam.",
+      "endereco" : "Rua José Miranda da Mota, N 32 - Serra do Sambe - Rio Bonito",
+      "imagem1" : "http://icons.iconarchive.com/icons/adidadidu/ipad/128/iPad-icon.png",
+      "imagem2" : "http://icons.iconarchive.com/icons/guillendesign/variations-3/128/Android-Store-icon.png",
+      "nome" : "Loja de informática do Zé",
+      "telefone" : "(21)3634-9856"
+    },
+    "Quitanda da Maria" : {
+      "descricao" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor venenatis ligula ut fermentum. Aenean vitae quam vel felis tincidunt posuere. Cras non facilisis mi. Etiam dignissim semper ipsum vitae ultricies. Donec in imperdiet risus. Sed dignissim mi eu ornare malesuada. Nulla sed lobortis velit. Sed eget gravida elit. Nam convallis elit et enim elementum, at ullamcorper velit viverra. Integer dignissim augue a egestas pharetra. Suspendisse molestie lorem ac dolor porttitor luctus. Nam suscipit metus lobortis tellus finibus, eleifend fermentum mi aliquam.",
+      "endereco" : "Rua Roberto Mesquita, N 123 - Pça Cruzeiro - Rio Bonito - RJ",
+      "imagem1" : "http://icons.iconarchive.com/icons/xaml-icon-studio/agriculture/128/Fruits-Vegetables-icon.png",
+      "imagem2" : "http://icons.iconarchive.com/icons/xaml-icon-studio/agriculture/128/Fruits-Vegetables-icon.png",
+      "nome" : "Quitanda da Maria",
+      "telefone" : "(21)2734-2521"
+    },
+    "Quitanda do nelson" : {
+      "descricao" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor venenatis ligula ut fermentum. Aenean vitae quam vel felis tincidunt posuere. Cras non facilisis mi. Etiam dignissim semper ipsum vitae ultricies. Donec in imperdiet risus. Sed dignissim mi eu ornare malesuada. Nulla sed lobortis velit. Sed eget gravida elit. Nam convallis elit et enim elementum, at ullamcorper velit viverra. Integer dignissim augue a egestas pharetra. Suspendisse molestie lorem ac dolor porttitor luctus. Nam suscipit metus lobortis tellus finibus, eleifend fermentum mi aliquam.",
+      "endereco" : "Rua Manoel Duarte, N 1233 - Centro - Rio Bonito",
+      "imagem1" : "http://icons.iconarchive.com/icons/sonya/swarm/128/Hair-icon.png",
+      "imagem2" : "http://icons.iconarchive.com/icons/guillendesign/variations-3/128/Android-Store-icon.png",
+      "nome" : "Barbearia Zé Piolho",
+      "telefone" : "(21)2734-1256"
+    }
+  },
+  "mensagem" : {
+    "aviso" : "Olá, obrigado por ter baixado o aplicativo :). Estamos na primeira versão e muita coisa ainda pode vir, tenho como objetivo adicionar uma área de turismo de Rio Bonito e já tenho especialistas na área para isso. Fique ligado nas versões do app! A intenção é apenas que que você encontre tudo na palma da sua mão. Se você falar algo do aplicativo com algum amigo já estará me ajudando muito e eu serei muito grato! Muito obrigado, tudo é feito com muito amor."
+  },
+  "turismo" : {
+    "turismo" : "Aguarde uma próxima versão do aplicativo, estamos preparando algo de muita qualidade para você! ;)"
+  }
+}

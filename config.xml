@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.riobonito365518" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>BoxRioBonito</name>
+  <name>TaAkiRioBonito</name>
   <description>
         Aplicativo que aglomera as informações da cidade de Rio Bonito.
     </description>
@@ -79,6 +79,6 @@
     <splash src="resources/android/splash/drawable-port-xxhdpi-screen.png" density="port-xxhdpi"/>
     <splash src="resources/android/splash/drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi"/>
   </platform>
-  <allow-navigation href="*" /> 
+  <allow-navigation href="*" />
   <icon src="resources/android/icon/drawable-xhdpi-icon.png"/>
 </widget>

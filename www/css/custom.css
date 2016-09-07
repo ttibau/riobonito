@@ -1,0 +1,12 @@
+img.imagem2 {
+	width: 100%;
+	height: auto;
+	padding: 5px;
+}
+.custom {
+	  background-color: #3f4041 !important; /* This sets the background color*/
+  }
+
+p.turismo {
+	position: center;
+}

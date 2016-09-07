@@ -1,0 +1,20 @@
+<ion-view title="Estabelecimentos" ng-controller="estabelecimentosCtrl">
+    <ion-content>
+      <div class="bar bar-header item-input-inset">
+          <label class="item-input-wrapper">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="search" placeholder="Procurar" ng-model="searchQuery">
+          </label>
+          <!-- <button class="button button-calm">
+            Pesquisar
+          </button> -->
+      </div>
+        <div class="list">
+            <a class="item item-avatar" ng-repeat="dado in dados | filter: {'esferaAdministrativa': 'Municipal'}:true | filter:searchQuery " ng-click="selecionaEstabelecimento(dado.codUnidade)">
+                <img src="img/saude.png">
+                <h2>{{dado.nomeFantasia}}</h2>
+                <p>{{dado.categoriaUnidade}}</p>
+            </a>
+        </div>
+    </ion-content>
+</ion-view>

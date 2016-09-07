@@ -20,18 +20,9 @@ $scope.pegaApuracao = function(){
   console.log(ApuracaoVotos.dados);
   return ApuracaoVotos.dados;
 };
-  
+
   $scope.dados = ApuracaoVotos.dados;
   console.log($scope.dados);
-
-  $scope.refresh = function(){
-    $ionicPopup.alert({
-      title: 'Estamos quase lá!',
-      template: 'Aguarde até o dia das apurações :D'
-    });
-    $scope.$broadcast('scroll.refreshComplete');
-  };
-
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
@@ -51,7 +42,7 @@ $scope.pegaApuracao = function(){
   };
 
   $scope.voltar = function(){
-    $scope.closeLogin();  
+    $scope.closeLogin();
   };
 
 })
@@ -59,7 +50,7 @@ $scope.pegaApuracao = function(){
 .controller('VereadorCtrl', function($scope){
 
 })
- 
+
 .controller('noticiasCtrl', function($scope, $http, ListaNoticia, $ionicLoading, $location) {
 
   $scope.parceiros = {
@@ -76,7 +67,7 @@ $scope.pegaApuracao = function(){
       nome: 'Jornalista Flávio Azevedo',
       url: 'http://jornalistaflavioazevedo.blogspot.com/feeds/posts/default?alt=rss',
       descricao: 'É editor do jornal "O TEMPO", um dos jornais que circulam em Rio Bonito/RJ. Ele também apresenta, na Super Radio Tupi 1340 AM - Leste Fluminense, de segunda a sexta-feira, entre 13h e 15h, o "Programa Flávio Azevedo", do qual é produtor e diretor'
-    }, 
+    },
     riobonito: {
       logo: 'img/rbrj.png',
       site: 'www.riobonito.blogspot.com.br/',
@@ -91,31 +82,31 @@ $scope.pegaApuracao = function(){
         template: 'Carregando dados...'
       }).then(function(){
          console.log("O indicador de carregamento foi iniciado...");
-    });  
+    });
     $http.get("http://rss2json.com/api.json", { params: { "rss_url" : url } })
       .success(function(data){
         ListaNoticia.dados = data;
         $scope.dados = data;
-        $ionicLoading.hide();  
-        $location.path('/app/noticiaselecionada');      
+        $ionicLoading.hide();
+        $location.path('/app/noticiaselecionada');
        // console.log($scope.dados);
       })
       .error(function(err){
         console.log("ERRO: " + err);
       });
   };
-  
+
 })
 
 .controller('PlaylistCtrl', function($scope) {
-  
+
 })
 
 .controller('listaCtrl', function($scope, $firebaseArray, $ionicPopup, $location, ListaSelecionado, $ionicLoading){
   var ref = new Firebase("https://riobonito-92bac.firebaseio.com/");
 
-  $scope.pegaDados = function (data){
-    $scope.dados = $firebaseArray(ref.child(data));
+  $scope.pegaDados = function ( data){
+    $scope.dados = $firebaseArray(ref.child('telelista').child(data));
     $location.path('/app/lista');
     $ionicLoading.show({
       template: 'Carregando dados...'
@@ -147,7 +138,7 @@ $scope.pegaApuracao = function(){
    //abre a modal
    $scope.abrirModal = function(dados){
       $scope.modal.show();
-      ItemSelecionado.item = dados; 
+      ItemSelecionado.item = dados;
       $scope.item = ItemSelecionado.item;
       console.log(ItemSelecionado.item);
    };
@@ -185,12 +176,12 @@ $scope.pegaApuracao = function(){
     animation: 'slide-in-up'
    }).then(function(modal){
     $scope.modal = modal;
-   });  
+   });
 
    //abre a modal
    $scope.abrirModal = function(dados){
       $scope.modal.show();
-      ItemSelecionado.item = dados; 
+      ItemSelecionado.item = dados;
       $scope.item = ItemSelecionado.item;
       console.log(ItemSelecionado.item);
    };
@@ -229,9 +220,8 @@ $scope.pegaApuracao = function(){
 
 
     $scope.agenda = $firebaseArray(ref.child('cultural'));
-    console.log($scope.agenda);
-    $scope.asd = 'cascudo';
-  
+    //console.log($scope.agenda);
+
 
   // faz a instancia do modal
   $ionicModal.fromTemplateUrl('templates/agendacultural.html', {
@@ -239,7 +229,7 @@ $scope.pegaApuracao = function(){
     animation: 'slide-in-up'
    }).then(function(modal){
     $scope.modal = modal;
-   }); 
+   });
 
   $scope.agendaCultural = function(){
    $scope.modal.show();
@@ -274,6 +264,33 @@ $scope.pegaApuracao = function(){
     .success(function(dados){
       $scope.dados = dados;
       $scope.img = "http://assets.hgbrasil.com/weather/images/" + dados.results.img_id + ".png";
+      switch (dados.results.img_id){
+        case "26n":
+          $scope.img = "http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/96/Status-weather-many-clouds-icon.png";
+          break;
+        case "31n":
+          $scope.img = "http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Status-weather-few-clouds-night-icon.png";
+          break;
+        case "29n":
+          $scope.img = "http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Status-weather-clouds-night-icon.png";
+      	  break;
+      	case "30":
+      	  $scope.img = "http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/96/Status-weather-clouds-icon.png";
+      	  break;
+      	case "34":
+      	  $scope.img = "http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/96/Status-weather-clouds-icon.png";
+      	  break;
+      	case "27n":
+      	  $scope.img = "http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Status-weather-few-clouds-night-icon.png";
+          break;
+        case "26":
+          $scope.img = "http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Status-weather-many-clouds-icon.png";
+          break;
+        case "32"  :
+          $scope.img = "http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Status-weather-clear-icon.png";
+      	default:
+          console.log("nenhuma");
+      }
       $ionicLoading.hide();
       console.log(dados);
     })
@@ -284,11 +301,64 @@ $scope.pegaApuracao = function(){
 })
 
 .controller("apuracaoCtrl", function($scope){
-  
+
 })
 
 .controller("sobreCtrl", function($scope, $firebaseObject){
-  var ref =  new Firebase("https://riobonito-92bac.firebaseio.com/");
+  var ref = new Firebase("https://riobonito-92bac.firebaseio.com");
   $scope.mensagem = $firebaseObject(ref.child('mensagem'));
   console.log($scope.mensagem);
+})
+
+.controller("turismoCtrl", function($scope, $firebaseObject, $ionicLoading){
+  var ref = new Firebase("https://riobonito-92bac.firebaseio.com/");
+  $scope.turismo = $firebaseObject(ref.child('turismo'));
+  $ionicLoading.show({
+  	template: 'Carregando dados...'
+  });
+  $scope.turismo.$loaded(
+  	function(x){
+		$ionicLoading.hide();
+	}, function(error){
+		console.log(error);
+	});
+})
+
+.controller("estabelecimentosCtrl", function($scope, $http, $ionicLoading, $location, EstabelecimentoSelecionado){
+  $ionicLoading.show({
+    template: 'Carregando dados...'
+  }).then(function(){
+    console.log("O indicador de carregamento foi iniciado");
+  });
+  $http.get("http://mobile-aceite.tcu.gov.br/mapa-da-saude/rest/estabelecimentos?municipio=Rio%20Bonito&uf=RJ&quantidade=300")
+    .success(function(data){
+      $scope.dados = data;
+      //console.log($scope.dados);
+      $ionicLoading.hide();
+    })
+    .error(function(err){
+      console.log("Erro: " + err);
+    });
+
+    $scope.selecionaEstabelecimento = function(codUnidade){
+      EstabelecimentoSelecionado.estabelecimento = codUnidade;
+      //console.log(EstabelecimentoSelecionado.estabelecimento);
+      $location.path('/estabelecimentoselecionado');
+    };
+
+    $scope.fechar = function(){
+      $location.path('/app/estabelecimentos');
+    };
+
+})
+
+.controller("estabelecimentoSelecionadoCtrl", function($scope, $http, EstabelecimentoSelecionado){
+  $http.get("http://mobile-aceite.tcu.gov.br:80/mapa-da-saude/rest/estabelecimentos/unidade/" + EstabelecimentoSelecionado.estabelecimento)
+    .success(function(data){
+      $scope.dados = data;
+      console.log($scope.dados);
+    })
+    .error(function(err){
+      console.log("Erro: " + err);
+    });
 })

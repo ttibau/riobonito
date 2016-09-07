@@ -60,6 +60,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'firebase', 'angular-
   return item;
 })
 
+.factory('EstabelecimentoSelecionado', function(){
+    estabelecimento = [];
+    return estabelecimento;
+})
+
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
@@ -78,13 +83,39 @@ angular.module('starter', ['ionic', 'starter.controllers', 'firebase', 'angular-
           controller: 'noticiaSelecionadaCtrl'
         }
       }
-    }) 
+    })
+
+    .state('app.estabelecimentos', {
+      url: '/estabelecimentos',
+      views: {
+        'menuContent' :{
+          templateUrl: 'templates/estabelecimentos.html',
+          controller: 'estabelecimentoSelecionadoCtrl'
+        }
+      }
+    })
+
+  .state('estabelecimentoselecionado', {
+    url: '/estabelecimentoselecionado',
+    templateUrl: 'templates/estabelecimentoselecionado.html',
+    controller: 'estabelecimentosCtrl'
+  })
 
   .state('app.search', {
     url: '/search',
     views: {
       'menuContent': {
         templateUrl: 'templates/search.html'
+      }
+    }
+  })
+
+  .state('app.turismo', {
+    url: '/turismo',
+    views: {
+      'menuContent' : {
+        templateUrl: 'templates/turismo.html',
+        controller: 'turismoCtrl'
       }
     }
   })

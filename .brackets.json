@@ -1,0 +1,7 @@
+{
+    "jscodehints.detectedExclusions": [
+        "/Applications/projetos/mobile/riobonito/platforms/android/build/intermediates/assets/debug/www/lib/angular-ui-router/src/viewScroll.js",
+        "/Applications/projetos/mobile/riobonito/www/js/app.js",
+        "/Applications/projetos/mobile/riobonito/platforms/android/build/intermediates/assets/debug/www/lib/ionic/js/angular/angular-animate.min.js"
+    ]
+}
