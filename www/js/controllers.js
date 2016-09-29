@@ -206,7 +206,7 @@ $scope.pegaApuracao = function(){
         .success(function(data) {
             $scope.dados = data;
             $ionicLoading.hide();
-            console.log(data.items);
+            //console.log(data.items);
         })
         .error(function(data) {
             console.log("ERROR: " + data);
@@ -220,7 +220,7 @@ $scope.pegaApuracao = function(){
 
 
     $scope.agenda = $firebaseArray(ref.child('cultural'));
-    //console.log($scope.agenda);
+    console.log($scope.agenda);
 
 
   // faz a instancia do modal
@@ -254,7 +254,7 @@ $scope.pegaApuracao = function(){
 
 })
 
-.controller("meteorologiaCtrl", function($scope, $http, $ionicLoading){
+.controller("meteorologiaCtrl", function($scope, $http, $ionicLoading, $ionicPopup){
   $ionicLoading.show({
       template: 'Carregando dados...'
     }).then(function(){
@@ -291,6 +291,13 @@ $scope.pegaApuracao = function(){
       	default:
           console.log("nenhuma");
       }
+        if (dados.results.temp == "") {
+          console.log("0");
+          $ionicPopup.alert({
+            title: 'Atenção!',
+            template: 'O sistema está consultando os dados e será incluso em instantes, por favor, retorne em alguns minutos.'
+          });
+        };
       $ionicLoading.hide();
       console.log(dados);
     })

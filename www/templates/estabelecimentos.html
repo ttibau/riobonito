@@ -12,7 +12,7 @@
         <div class="list">
             <a class="item item-avatar" ng-repeat="dado in dados | filter: {'esferaAdministrativa': 'Municipal'}:true | filter:searchQuery " ng-click="selecionaEstabelecimento(dado.codUnidade)">
                 <img src="img/saude.png">
-                <h2>{{dado.nomeFantasia}}</h2>
+                <h2 style="white-space: normal;">{{dado.nomeFantasia}}</h2>
                 <p>{{dado.categoriaUnidade}}</p>
             </a>
         </div>

@@ -19,6 +19,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'firebase', 'angular-
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+    window.plugins.OneSignal.init("f9c68922-8afd-4da7-97ab-d81c63525b31",
+                               {googleProjectNumber: "711716660161",
+                                autoRegister: true},
+                                notificationOpenedCallback);
+
+   var notificationOpenedCallback = function(jsonData) {
+    console.log('didReceiveRemoteNotificationCallback: ' + JSON.stringify(jsonData));
+  }                     
+
   });
 })
 

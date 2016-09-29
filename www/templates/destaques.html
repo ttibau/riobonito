@@ -1,9 +1,9 @@
 <ion-view view-title="Destaques" ng-controlle="destaquesCtrl">
   <ion-content ng-init="mensagemInit()" > 
-  	<div class="list" ng-repeat="dados in dados">
+  	<div class="list" ng-repeat="dados in dados | orderBy: dados.posicao">
     <a class="item item-thumbnail-left" href="#" ng-click="abrirModal({{dados}})">
       <img ng-src="{{dados.imagem1}}">
-      <h2><span class="ion-ios-star-outline"></span> {{dados.nome}}</h2>
+      <h2 style="white-space: normal;"><span class="ion-ios-star-outline"></span> {{dados.nome}}</h2>
       <p>{{dados.descricao}}</p>
     </a>
 </div>
